@@ -1,34 +1,79 @@
 import 'package:flutter/material.dart';
-import 'package:khmer_fonts/khmer_fonts.dart';
 
-class Login extends StatelessWidget {
-  const Login({super.key});
+class HomeCar extends StatefulWidget {
+  const HomeCar({super.key});
 
+  @override
+  State<HomeCar> createState() => _HomeCarState();
+}
+
+class _HomeCarState extends State<HomeCar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF2471A3),
-      body: Container(
-        width: double.infinity,
-        height: 300,
-        child: SafeArea(
-          child: Column(
-            children: [
-              SizedBox(height: 20),
-              Text("ក្រសួងសុខាភិបាល",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white,fontFamily: KhmerFonts.moul, package: "Khmer_fonts")),
-              SizedBox(height: 10),
-              Container(
-                width: MediaQuery.of(context).size.width * 0.8,
-                decoration: BoxDecoration(
-                  border: Border.symmetric(horizontal: BorderSide(width: 0.5,color: Colors.white)),
-                ),
+      backgroundColor: Colors.grey[200],
+      body: SafeArea(
+        child: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+              width: MediaQuery.of(context).size.width * 1,
+              height: 550,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(bottomRight: Radius.circular(20),bottomLeft: Radius.circular(20))
               ),
-              SizedBox(height: 10),
-              Text("ម.គ.ច",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 25,fontFamily: KhmerFonts.moul,package: "Khmer_fonts")),
-            ],
-          ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                    Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      customIcon(icon: Icons.arrow_back,haveborder: false),
+                      Row(
+                        children: [
+                          customIcon(icon: Icons.bookmark,color: Colors.blue,),
+                          SizedBox(width: 10),
+                          customIcon(icon: Icons.drive_folder_upload,haveborder: false),
+                        ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10),
+
+                  Text("Camaro",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold)),
+                  Text("Charolet",style: TextStyle(fontSize: 15,color: Colors.grey)),
+                  Container(
+                    width: double.infinity,
+                    height: 280,
+                    child: PageView(
+                      children: [
+                        Image.network("https://c4.wallpaperflare.com/wallpaper/173/858/345/mclaren-white-background-supercar-mclaren-wallpaper-preview.jpg",fit: BoxFit.fill),
+                        Image.network("https://w0.peakpx.com/wallpaper/412/597/HD-wallpaper-white-ferrari-car-cars-fast-ferrari-nfs-road-speed-wheel-wheels-white.jpg",fit: BoxFit.fill),
+                        Image.network("https://4kwallpapers.com/images/wallpapers/mclaren-sabre-mso-white-background-2021-5k-8k-3840x2160-4038.jpeg"),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
+  }
+
+  Container customIcon({required IconData icon, Color color =Colors.white, bool haveborder = true}) {
+    return Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: color,
+                    borderRadius: BorderRadius.circular(15),
+                    border: haveborder? Border.all(color: Colors.black) : null,
+                  ),
+                  child: Icon(icon),
+                );
   }
 }
