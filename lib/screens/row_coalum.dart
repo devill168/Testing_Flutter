@@ -15,6 +15,7 @@ class _HomeCarState extends State<HomeCar> {
       backgroundColor: Colors.grey[200],
       body: SafeArea(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
@@ -99,10 +100,106 @@ class _HomeCarState extends State<HomeCar> {
                 ],
               ),
             ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("SPECIFICATION",style: TextStyle(color: Colors.grey,fontSize: 20)),
+                  SizedBox(height: 10),
+                  Row(
+                    children: [
+                      customInfo(title: "Color",info: "White"),
+                      SizedBox(width: 10),
+                      customInfo(title: "Container",info: "Automatic"),
+                      SizedBox(width: 10),
+                      customInfo(title: "Seat",info: "4"),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+
+            Spacer(),
+
+            Container(
+              width: double.infinity,
+              height: 120,
+              color: Colors.white,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 15,horizontal: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("12 Months",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15)),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                       children: [
+                         Row(
+                           children: [
+                             Text("IDR 4,35jt",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20)),
+                             SizedBox(width: 3),
+                             Text("Per Month",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12,color: Colors.grey)),
+                           ],
+                         ),
+                         Row(
+                           children: [
+                             Container(
+                               width: 170,
+                               height: 50,
+                               decoration: BoxDecoration(
+                                 color: Colors.blueAccent,
+                                 borderRadius: BorderRadius.all(Radius.circular(20)),
+                               ),
+                               child: Column(
+                                 mainAxisAlignment: MainAxisAlignment.center,
+                                 children: [
+                                   Text("Select This Car",style: TextStyle(color: Colors.white,fontSize: 17,fontWeight: FontWeight.bold),)
+                                 ],
+                               ),
+                             ),
+                           ],
+                         ),
+                       ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
     );
+  }
+
+  Container customInfo({String title = "", String info = ""}) {
+    return Container(
+                  width: 120,
+                  height: 80,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    boxShadow: [
+                       BoxShadow(
+                          color: Colors.grey,
+                          offset: const Offset(1.0, 3.0),
+                          blurRadius: 5.0,
+                          spreadRadius: 2.0,
+                       ), //BoxShadow
+                    ],
+                  ), 
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(title,style: TextStyle(color: Colors.grey,fontSize: 16)),
+              SizedBox(height: 5),
+              Text(info,style: TextStyle(color: Colors.black,fontSize: 18,fontWeight: FontWeight.bold)),
+            ],
+          ),
+        ),
+                );
   }
 
   Row customPriceCar({Color colorBox = Colors.white, Color colorText =Colors.blue, String month ="", String price = "", String Info = "'" }) {
