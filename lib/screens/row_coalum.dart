@@ -7,7 +7,7 @@ class HomeCar extends StatefulWidget {
   @override
   State<HomeCar> createState() => _HomeCarState();
 }
-final _controller=PageController();
+final _controller = PageController();
 class _HomeCarState extends State<HomeCar> {
   @override
   Widget build(BuildContext context) {
